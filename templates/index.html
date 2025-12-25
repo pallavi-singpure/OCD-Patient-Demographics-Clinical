@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCD Severity Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+
+<div class="card">
+    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000" alt="Medical Analysis" class="banner-img">
+
+    <div class="content">
+        <header>
+            <h1>OCD Clinical Severity Predictor</h1>
+            <p>Enter patient data to calculate predicted severity based on clinical metrics</p>
+        </header>
+
+        <form action="/predict" method="post" class="grid">
+
+            <div class="form-group">
+                <label>Age</label>
+                <input type="number" name="Age" min="17" max="95" value="40" required>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <select name="Gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Ethnicity</label>
+                <select name="Ethnicity">
+                    <option value="Caucasian">Caucasian</option>
+                    <option value="Hispanic">Hispanic</option>
+                    <option value="Asian">Asian</option>
+                    <option value="African">African</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Marital Status</label>
+                <select name="Marital_Status">
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Education Level</label>
+                <select name="Education_Level">
+                    <option value="Some College">Some College</option>
+                    <option value="College Degree">College Degree</option>
+                    <option value="High School">High School</option>
+                    <option value="Graduate Degree">Graduate Degree</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Previous Diagnoses</label>
+                <select name="Previous_Diagnoses">
+                    <option value="MDD">MDD (Major Depressive Disorder)</option>
+                    <option value="Panic Disorder">Panic Disorder</option>
+                    <option value="GAD">GAD (General Anxiety)</option>
+                    <option value="PTSD">PTSD</option>
+                    <option value="No Previous Diagnoses">No Previous Diagnoses</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Family History of OCD</label>
+                <select name="Family_History_of_OCD">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Depression Diagnosis</label>
+                <select name="Depression_Diagnosis">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Anxiety Diagnosis</label>
+                <select name="Anxiety_Diagnosis">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Medications</label>
+                <select name="Medications">
+                    <option value="No Medications">No Medications</option>
+                    <option value="Benzodiazepine">Benzodiazepine</option>
+                    <option value="SNRI">SNRI</option>
+                    <option value="SSRI">SSRI</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Obsession Type</label>
+                <select name="Obsession_Type">
+                    <option value="Harm-related">Harm-related</option>
+                    <option value="Contamination">Contamination</option>
+                    <option value="Religious">Religious</option>
+                    <option value="Symmetry">Symmetry</option>
+                    <option value="Hoarding">Hoarding</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Compulsion Type</label>
+                <select name="Compulsion_Type">
+                    <option value="Washing">Washing</option>
+                    <option value="Counting">Counting</option>
+                    <option value="Checking">Checking</option>
+                    <option value="Praying">Praying</option>
+                    <option value="Ordering">Ordering</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Symptoms Duration (Months)</label>
+                <input type="number" name="Duration_of_Symptoms_months" min="6" max="240" value="12" required>
+            </div>
+
+            <div class="form-group">
+                <label>Y-BOCS Score (Obsessions)</label>
+                <input type="number" name="YBOCS_Obsessions" min="0" max="40" value="20" required>
+            </div>
+
+            <div class="form-group">
+                <label>Y-BOCS Score (Compulsions)</label>
+                <input type="number" name="YBOCS_Compulsions" min="0" max="40" value="20" required>
+            </div>
+
+            <div class="btn-container">
+                <button type="submit">Analyze Severity</button>
+            </div>
+
+            {% if prediction %}
+            <div class="result" id="result-box">
+                <h3>Predicted Severity Level:</h3>
+                <h2 style="color: #e67e22; margin: 0;">{{ prediction }}</h2>
+            </div>
+            {% endif %}
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

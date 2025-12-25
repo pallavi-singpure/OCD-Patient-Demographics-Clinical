@@ -1,0 +1,141 @@
+:root {
+    --primary: #2c3e50;
+    --accent: #3498db;
+    --bg: #f0f2f5;
+    --white: #ffffff;
+    --shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: var(--white);
+    max-width: 900px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.banner-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background-color: #d1d8e0;
+}
+
+.content {
+    padding: 40px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: var(--primary);
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+}
+
+p {
+    color: #7f8c8d;
+    margin-top: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+input, select {
+    padding: 12px;
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: var(--accent);
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.btn-container {
+    grid-column: span 2;
+    margin-top: 30px;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.result {
+    grid-column: span 2;
+    margin-top: 40px;
+    padding: 25px;
+    background: #f1f9ff;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px dashed var(--accent);
+    animation: fadeIn 0.5s ease-in;
+}
+
+.result h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 650px) {
+    .grid { grid-template-columns: 1fr; }
+    .btn-container { grid-column: span 1; }
+    .content { padding: 20px; }
+}
